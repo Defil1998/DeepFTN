@@ -419,82 +419,7 @@ TP_th = (1-BLER_th) * nBitsPerPacket/(Tn * nSymbols);
 clc
 disp("Simulation completed!")
 
-%% Plots
-% BER
-BER_list = ["MED", "CNN", "ISI-free"];
-figure
-semilogy(EbN0dB, BER, 'b*-', LineWidth=1.5);
-hold on
-semilogy(EbN0dB, BER_CNN, 'g', LineWidth=1.5);
-semilogy(EbN0dB, BER_th, 'k--', LineWidth=1.5);
-if toggle_DNN
-    semilogy(EbN0dB, BER_DNN, '*-', LineWidth=1.5, Color=[0.6350 0.0780 0.1840]);
-    BER_list = [BER_list, "DNN [9]"];
-end
-if toggle_FDE
-    semilogy(EbN0dB, BER_FDE, 'r*-', LineWidth=1.5);
-    BER_list = [BER_list, "FDE [7]"];
-end
-if toggle_SDR
-    semilogy(EbN0dB, BER_SDR, '*-', LineWidth=1.5, Color=[0.4940 0.1840 0.5560]);
-    BER_list = [BER_list, "STSDRSE [8]"];
-end
-grid on
-title('BER vs. Eb/N0', fontsize=14);
-legend(BER_list, fontsize=14);
-xlabel('Eb/N0 [dB]', fontsize=14);
-ylabel("BER", fontsize=14);
-
-% BLER
-BLER_list = ["MED", "CNN", "ISI-free"];
-figure
-semilogy(EbN0dB, BLER, 'b*-', LineWidth=1.5);
-hold on
-semilogy(EbN0dB, BLER_CNN, 'g', LineWidth=1.5);
-semilogy(EbN0dB, BLER_th, 'k--', LineWidth=1.5);
-if toggle_DNN
-    semilogy(EbN0dB, BLER_DNN, '*-', LineWidth=1.5, Color=[0.6350 0.0780 0.1840]);
-    BLER_list = [BLER_list, "DNN [9]"];
-end
-if toggle_FDE
-    semilogy(EbN0dB, BLER_FDE, 'r*-', LineWidth=1.5);
-    BLER_list = [BLER_list, "FDE [7]"];
-end
-if toggle_SDR
-    semilogy(EbN0dB, BLER_SDR, '*-', LineWidth=1.5, Color=[0.4940 0.1840 0.5560]);
-    BLER_list = [BLER_list, "STSDRSE [8]"];
-end
-grid on
-title('BLER vs. Eb/N0', fontsize=14);
-legend(BLER_list, fontsize=13);
-xlabel('Eb/N0 [dB]', fontsize=14);
-ylabel("BLER", fontsize=14);
-
-% Throughput
-TP_list = ["MED", "CNN", "ISI-free"];
-figure
-plot(EbN0dB, TP/1e6, 'b*-', LineWidth=1.5);
-hold on
-plot(EbN0dB, TP_CNN/1e6, 'g', LineWidth=1.5);
-plot(EbN0dB, TP_th/1e6, 'k--', LineWidth=1.5);
-if toggle_DNN
-    plot(EbN0dB, TP_DNN/1e6, '*-', LineWidth=1.5, Color=[0.6350 0.0780 0.1840]);
-    TP_list = [TP_list, "DNN [9]"];
-end
-if toggle_FDE
-    plot(EbN0dB, TP_FDE/1e6, 'r*-', LineWidth=1.5);
-    TP_list = [TP_list, "FDE [7]"];
-end
-if toggle_SDR
-    plot(EbN0dB, TP_SDR/1e6, '*-', LineWidth=1.5, Color=[0.4940 0.1840 0.5560]);
-    TP_list = [TP_list, "STSDRSE [8]"];
-end
-grid on
-title('Throughput vs. Eb/N0', fontsize=14);
-legend(TP_list, fontsize=14);
-xlabel('Eb/N0 [dB]', fontsize=14);
-ylabel("Throughput [Mbps]", fontsize=14);
-
+%% Save results
 toSave = {BER, BER_CNN, BER_th.', BLER, BLER_CNN, BLER_th, TP, TP_CNN, TP_th, EbN0dB.', toggle_FDE, toggle_SDR, toggle_DNN};
 if toggle_FDE
     toSave{end+1} = BER_FDE;
@@ -512,5 +437,5 @@ if toggle_DNN
     toSave{end+1} = TP_DNN;
 end
 
-filename = strcat("Results/Results_", string(ftnParam), "_", string(rollOff), "_", string(Rc), "_11_20", ".mat");
+filename = strcat("Results/Results_", string(ftnParam), "_", string(rollOff), "_", string(Rc), ".mat");
 save(filename, "toSave");
