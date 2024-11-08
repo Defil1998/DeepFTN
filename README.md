@@ -3,7 +3,7 @@ A MATLAB simulator for Faster Than Nyquist (FTN) with Deep Learning.
 The code makes use of CVX, a package for specifying and solving convex programs [1], and of the 5G NR LDPC MATLAB implementation published in [2].
 
 - FTN_train_CNN: This script trains the Convolutional Neural Network (CNN) with skip connections model presented in [3], which aims at demodulating FTN-transmitted QPSK symbols.
-- FTN_train_DNN: This script trains the Deep Neural Network (DNN) proposed in [4], which equalizes FTN-transmitted QPSK symbols.
+- FTN_train_DNNbenchmark: This script trains the Deep Neural Network (DNN) proposed in [4], which equalizes FTN-transmitted QPSK symbols.
 - FTN_test: This script performs a Monte Carlo simulation to evaluate the Bit Error Rate (BER), Block Error Rate (BLER), and throughput achieved by the CNN model and several benchmarks, including the DNN model presented in [4], Frequency-Domain Equalization [5], and Set-Theory-based Semi-Definite Relaxation Sequence Detection [6].
 
 # References
