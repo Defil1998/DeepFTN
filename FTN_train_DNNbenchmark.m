@@ -241,7 +241,7 @@ end
 bestLoss = gather(bestLoss);
 
 % Create file name
-filename = strcat("Models/Bench-", string(ftnParam), "-", string(rollOff), ".mat");
+filename = strcat("Models/DNN-", string(ftnParam), "-", string(rollOff), ".mat");
 
 % Save best network and corresponding loss
 save(filename, "bestNet", "bestLoss");
