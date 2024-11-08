@@ -55,7 +55,7 @@ EbN0 = 10.^(EbN0dB ./ 10);          % Eb/N0 ratio
 EsN0 = EbN0 * m;                    % Es/N0 ratio
 
 if toggle_DNN           % Load DNN benchmark model
-    load(strcat("Models/Bench-", string(ftnParam), "-", string(rollOff), ".mat"), "bestNet");
+    load(strcat("Models/DNN-", string(ftnParam), "-", string(rollOff), ".mat"), "bestNet");
     bestNet_DNN = bestNet;
     nSymbolsExtraHalf = (nSymbolsIn_DNN - nSymbolsOut_DNN) / 2; % Total number of additional symbols to consider for DNN benchmark          
 else
