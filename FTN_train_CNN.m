@@ -122,15 +122,15 @@ while epochCounter < numEpochs && ~monitor.Stop     % Loop over epochs
         for i=1:batchSize
         
             %% Bit source
-            bits = round(rand(1, nSymbols * m));
+            bits = round(rand(nSymbols * m, 1));
             
             %% Mapper
-            symbols = qammod([round(rand(m*length(g_xcorr_samp), 1)); ...
-                              round(rand(m*LISI_AI, 1)); ...
-                              bits.'; ...
+            symbols = qammod([round(rand(m*length(g_xcorr_samp), 1)); ...            % Dummy symbols to cover full ISI span
+                              round(rand(m*LISI_AI, 1)); ...                         % Dummy symbols to cover CNN padding
+                              bits; ...                                            
                               round(rand(m*LISI_AI, 1)); ...
                               round(rand(m*length(g_xcorr_samp), 1))], ...
-                              M, 'gray', 'input', 'bit', 'UnitAveragePower', true); %mapping with random padding symbols before and after
+                              M, 'gray', 'input', 'bit', 'UnitAveragePower', true);
 
             %% ISI channel
             txSignal = Gn * symbols;    % Apply ISI channel to generated symbols
@@ -209,9 +209,6 @@ while epochCounter < numEpochs && ~monitor.Stop     % Loop over epochs
 end
 
 bestLoss = gather(bestLoss);
-%filename = strcat("Models/CNN-", string(ftnParam), "-", string(rollOff), ".mat");
-filename = strcat("AI_model_", string(ftnParam), "_", string(rollOff), "_", string(datetime), ".mat");
-filename = replace(filename, ":", "-");
-filename = replace(filename, " ", "_");
+filename = strcat("Models/CNN-", string(ftnParam), "-", string(rollOff), ".mat");
 
 save(filename, "bestNet", "bestLoss");
