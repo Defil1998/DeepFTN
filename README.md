@@ -6,10 +6,10 @@ The code has been developed in the framework of [1] and makes use of CVX, a pack
 - FTN_train_DNNbenchmark: This script trains the Deep Neural Network (DNN) proposed in [4], which equalizes FTN-transmitted QPSK symbols.
 - FTN_test: This script performs a Monte Carlo simulation to evaluate the Bit Error Rate (BER), Block Error Rate (BLER), and throughput achieved by the CNN model and several benchmarks, including the DNN model presented in [4], Frequency-Domain Equalization [5], and Set-Theory-based Semi-Definite Relaxation Sequence Detection [6].
 
-When using this simulator, please cite as: B. De Filippo, C. Amatetti, A. Vanelli-Coralli, "Faster-Than-Nyquist Equalization with Convolutional Neural Networks", to be presented at 2025 IEEE 36th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC), Istanbul, Turkey, 2025. Available at: https://arxiv.org/abs/2501.11594
+When using this simulator, please cite as: B. De Filippo, C. Amatetti and A. Vanelli-Coralli, "Faster-than-Nyquist Equalization with Convolutional Neural Networks," 2025 IEEE 36th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC), Istanbul, Turkiye, 2025, pp. 1-6, doi: 10.1109/PIMRC62392.2025.11274769.
 
 # References
-[1] B. De Filippo, C. Amatetti, A. Vanelli-Coralli, "Faster-Than-Nyquist Equalization with Convolutional Neural Networks", to be presented at 2025 IEEE 36th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC), Istanbul, Turkey, 2025. Available at: https://arxiv.org/abs/2501.11594
+[1] B. De Filippo, C. Amatetti and A. Vanelli-Coralli, "Faster-than-Nyquist Equalization with Convolutional Neural Networks," 2025 IEEE 36th International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC), Istanbul, Turkiye, 2025, pp. 1-6, doi: 10.1109/PIMRC62392.2025.11274769.
 
 [2] CVX Research, Inc., "CVX: Matlab software for disciplined convex programming", version 2.0, April 2011. Available at: https://cvxr.com/cvx
 
